@@ -1,7 +1,5 @@
 # User Authentication System # 
 
-Backend application with java implements authentication using JWT (JSON Web Tokens), Password using Bcrypt and store to database
-
 ---
 ## 🚀 Project Overview
 
