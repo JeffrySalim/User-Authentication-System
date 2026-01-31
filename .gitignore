@@ -59,14 +59,9 @@ Desktop.ini
 ### Environment / Config ###
 .env
 *.env
-*.properties
-application-local.properties
-application-dev.properties
-application-test.properties
 application-secrets.yml
 /target
 /.idea
-application.properties
 
 ### Database files ###
 *.sql
