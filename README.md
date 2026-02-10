@@ -83,15 +83,69 @@ You can test the API using tools like Postman or cURL.
 You need to send the Authorization header with Bearer <JWT> for protected routes.
 
 ---
-## :gear: Development Notes
+## :gear: Development Guide
 
-This project uses:
-Spring Boot 4.0.1 (latest stable version)
-MySQL for data persistence
-JWT for handling secure authentication tokens
-Bcrypt Password Encoder to securely hash user passwords
-To add more features, such as refresh tokens or OAuth integration, feel free to open an issue or contribute to the project!
+- 🔹1. Preparation 
 
+        Create Account Hub Docker -> Settings -> Security -> Personal Access Token
+        Generate New Token -> Fill Access Token Desc & Expiration Date -> Access Permission Read & Write - Generate
+
+- 🔹2. Configure SSH
+
+        Github Project -> Setting -> Secret and Variables -> Actions -> New Repository Secret
+        VPS_HOST = ${Host_Server}
+        VPS_USER = ${User_Server}
+        VPS_SSH_KEY = ${Ssh_Key}
+        DOCKERHUB_USERNAME = ${Username_Dockerhub}
+        DOCKERHUB_TOKEN = ${Token_Dockerhub}
+  
+- 🔹3. Add Remote  
+
+        git remote add origin https://github.com/your-repo.git
+
+- 🔹4. Create Dockerfile at root project  
+
+        Copy Dockerfile to your Dockerfile
+
+- 🔹5. Create docker-compose.yml at root project  
+
+        Copy docker-compose.yml to your docker-compose.yml
+        Set your service name, image name and container_name same with your docker vps
+
+- 🔹6. Create file .github/workflows/deploy.yml at root project 
+
+        Copy .github/workflows/deploy.yml to your .github/workflows/deploy.yml
+        Set your IMAGE_NAME and APP_DIR same with your docker vps
+
+- 🔹7. Set Up VPS
+
+        Access your vps with terminal
+        ssh user_vps@host_vps
+
+        Enter to your folder and create file .env
+        Fill your file .env with your need from your project and add APP_POST=${port}
+
+- 🔹8. Commit your project to github at main branch 
+
+- 🔹9. Check your CI/CD at tab Action on github
+
+- 🔹10. To Access this project you can check with postman
+
+        url : http://203.194.115.210:9001/api/auth/register
+        Request Method : Post
+        Content-Type : application/json
+        language : json
+        { "email" : "test@gmail.com", "password" : 123}
+ 
+        url : http://203.194.115.210:9001/api/auth/login
+        Request Method : Post
+        Content-Type : application/json
+        language : json
+        { "email" : "test@gmail.com", "password" : 123}
+
+        url : http://203.194.115.210:9001/api/user
+        Request Method : Get
+        
 ---
 ## :rocket: Contributing
 
